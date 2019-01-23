@@ -1,26 +1,71 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+
+import Header from "./components/Header";
+import moviesApi from "./api/moviesApi";
+import MovieList from "./components/MovieList";
+import SearchBar from "./components/SearchBar";
+
+const KEY = "755bed67f4188fd1447c767c7cf82131";
 
 class App extends Component {
+  state = { videos: [], empty: true, noMovie: "" };
+  componentDidMount() {
+    this.setState({ noMovie: "Search for a movie..." });
+  }
+
+  onSearchSubmit = async term => {
+    const response = await moviesApi.get("/search/movie", {
+      params: {
+        api_key: KEY,
+        query: term
+      }
+    });
+
+    const results = response.data.results;
+
+    function isEmpty(arr) {
+      for (var key in arr) {
+        if (arr.hasOwnProperty(key)) return false;
+      }
+      return true;
+    }
+
+    if (isEmpty(results)) {
+      this.setState({
+        empty: true,
+        noMovie: `Sorry :( we can not find: ${term}`
+      });
+    } else {
+      this.setState({ empty: false });
+    }
+
+    this.setState({ videos: results });
+
+    this.renderContent();
+  };
+
+  renderContent() {
+    if (this.state.empty) {
+      return (
+        <div className="ui container">
+          <h3>{this.state.noMovie}</h3>
+        </div>
+      );
+    }
+    return <MovieList videos={this.state.videos} />;
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <React.Fragment>
+        <Header />
+        <SearchBar onSubmit={this.onSearchSubmit} />
+        <div className="ui container">
+          <div className="ui three stackable cards link">
+            {this.renderContent()}
+          </div>
+        </div>
+      </React.Fragment>
     );
   }
 }
