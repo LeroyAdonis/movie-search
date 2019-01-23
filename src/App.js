@@ -17,7 +17,8 @@ class App extends Component {
     const response = await moviesApi.get("/search/movie", {
       params: {
         api_key: KEY,
-        query: term
+        query: term,
+        adult: false
       }
     });
 

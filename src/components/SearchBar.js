@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./SearchBar.css";
 
 class SearchBar extends Component {
   state = { term: "" };
@@ -13,14 +14,21 @@ class SearchBar extends Component {
     return (
       <div style={{ marginBottom: "20px" }} className="ui segment container">
         <form onSubmit={this.onFormSubmit} className="ui form">
-          <div className="field">
-            <input
-              className="fluid"
-              value={this.state.term}
-              onChange={e => this.setState({ term: e.target.value })}
-              type="text"
-              placeholder="Search..."
-            />
+          <div className="ui stackable grid field">
+            <div className="twelve wide column">
+              <input
+                value={this.state.term}
+                onChange={e => this.setState({ term: e.target.value })}
+                type="text"
+                placeholder="Search..."
+              />
+            </div>
+            <div className="four wide column npt">
+              <button class="fluid ui button">
+                <i onClick={this.onFormSubmit} className="ui icon search" />{" "}
+                Search
+              </button>
+            </div>
           </div>
         </form>
       </div>
