@@ -14,6 +14,7 @@ class Footer extends Component {
     return (
       <div className="ui container">
         <button
+          style={{ margin: "10px" }}
           onClick={this.scrollUp}
           className="ui right floated compact labeled icon button primary"
         >
