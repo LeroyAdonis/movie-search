@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import moviesApi from "./api/moviesApi";
 import MovieList from "./components/MovieList";
 import SearchBar from "./components/SearchBar";
+import Footer from "./components/Footer";
 
 const KEY = "755bed67f4188fd1447c767c7cf82131";
 
@@ -56,6 +57,12 @@ class App extends Component {
     return <MovieList videos={this.state.videos} />;
   }
 
+  renderFooter = () => {
+    if (!this.state.empty) {
+      return <Footer />;
+    }
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -66,6 +73,7 @@ class App extends Component {
             {this.renderContent()}
           </div>
         </div>
+        {this.renderFooter()}
       </React.Fragment>
     );
   }
