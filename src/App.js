@@ -34,7 +34,7 @@ class App extends Component {
     if (isEmpty(results)) {
       this.setState({
         empty: true,
-        noMovie: `Sorry :( we can not find: ${term}`
+        noMovie: `Sorry, we couldn't find: ${term}.`
       });
     } else {
       this.setState({ empty: false });
