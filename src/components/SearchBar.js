@@ -23,8 +23,8 @@ class SearchBar extends Component {
                 placeholder="Search..."
               />
             </div>
-            <div className="four wide column npt">
-              <button class="fluid ui button">
+            <div className="four wide column">
+              <button class="fluid ui button teal">
                 <i onClick={this.onFormSubmit} className="ui icon search" />{" "}
                 Search
               </button>
