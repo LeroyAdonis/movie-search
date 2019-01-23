@@ -4,13 +4,7 @@ import "./MovieList.css";
 const MoviesList = ({ videos, videoSelected }) => {
   const renderList = videos.map(video => {
     return (
-      <div
-        onClick={() => {
-          console.log(videoSelected);
-        }}
-        key={video.id}
-        className="ui card"
-      >
+      <div key={video.id} className="ui card">
         <div className="image">
           <img
             src={`https://image.tmdb.org/t/p/w500/${video.poster_path}`}

@@ -15,7 +15,7 @@ class SearchBar extends Component {
       <div style={{ marginBottom: "20px" }} className="ui segment container">
         <form onSubmit={this.onFormSubmit} className="ui form">
           <div className="ui stackable grid field">
-            <div className="twelve wide column">
+            <div className="eleven wide column">
               <input
                 value={this.state.term}
                 onChange={e => this.setState({ term: e.target.value })}
@@ -23,7 +23,7 @@ class SearchBar extends Component {
                 placeholder="Search..."
               />
             </div>
-            <div className="four wide column">
+            <div className="five wide column">
               <button className="fluid ui button teal">
                 <i onClick={this.onFormSubmit} className="ui icon search" />{" "}
                 Search
