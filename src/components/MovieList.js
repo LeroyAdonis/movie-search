@@ -13,7 +13,7 @@ const MoviesList = ({ videos, videoSelected }) => {
       >
         <div className="image">
           <img
-            src={`http://image.tmdb.org/t/p/w500/${video.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w500/${video.poster_path}`}
             alt=""
           />
         </div>
