@@ -69,9 +69,7 @@ class App extends Component {
         <Header />
         <SearchBar onSubmit={this.onSearchSubmit} />
         <div className="ui container">
-          <div className="ui three stackable cards link">
-            {this.renderContent()}
-          </div>
+          <div className="ui three stackable cards">{this.renderContent()}</div>
         </div>
         {this.renderFooter()}
       </React.Fragment>
